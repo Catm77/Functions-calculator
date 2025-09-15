@@ -1,22 +1,24 @@
+import Completing_The_Square
+import Vertex_Form_Parabola
+import Text
+import Options
+
 def Calculate_Parabola():
-    print("At the moment this only calculates Vertex form from Standard form")
+    print("Choose the function to calculate the parabola you want to use: ")
+    parabola_chosen = Text.Parabola_options()
 
-    print("Input the ax^2 + bx + c equation values in the format a, b, c")
-    print("The values should be separated by a comma and a space")
-    print("The x and the squared are not needed for they will be calculated atomatically")
-    user_input = input("Enter the values here: ")
-    a_str, b_str, c_str = user_input.split(", ")
+    method = Options.set_parabola_option(parabola_chosen)
 
-    a = float(a_str)
-    b = float(b_str)
-    c = float(c_str)
+    if method == "Vertex form":
+        result = Vertex_Form_Parabola.Calculate_Vertex_Form()
+        return result
+    elif method == "Complete the square":
+        result = Completing_The_Square.Calculate_Completing_The_Square()
+        return result
+    elif method == "Partial factored form":
+        return "Partial factored form is not yet implemented"
+    else:
+        return "The option you chose is either invalid or not yet implemented"
 
-    x = -b / (2 * a)
-    y = a * x**2 + b * x + c
-
-    print(f"In vertex form the equation is: y = {a}(x - ({x}))^2 + ({y})")
-    print(f"The vertex is located at: ({x}, {y})")
-
-    return f"Vertex form: y = {a}(x - ({x}))^2 + ({y}), Vertex: ({x}, {y})"
 
 
